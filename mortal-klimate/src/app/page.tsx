@@ -1,6 +1,26 @@
 import Image from 'next/image'
 
 const weatherApi = process.env.WEATHER_API_KEY
+const weatherApiUrl = process.env.WEATHER_API_URL
+async function fetchWeatherData() {
+  try {
+    const fetchUrl = `${weatherApiUrl}/current.json?key=${weatherApi}&q=London&aqi=no`
+    const response = await fetch(fetchUrl);
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const weatherData = await response.json();
+    // Handle and use the weather data here
+    console.log(weatherData);
+  } catch (error) {
+    console.error('Error fetching weather data:', error);
+  }
+}
+
+// Call the fetchWeatherData function
+fetchWeatherData();
 
 export default function Home() {
   return (
