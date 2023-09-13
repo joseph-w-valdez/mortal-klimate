@@ -1,5 +1,6 @@
 'use client';
 import { useState } from 'react';
+import Image from 'next/image'
 
 interface WeatherData {
   current: {
@@ -81,11 +82,14 @@ export default function Form() {
               <h1>{weatherData.location.name}, {weatherData.location.region}, {weatherData.location.country}</h1>
               <div className='flex items-center justify-between'>
                 <p>Condition: {weatherData.current.condition.text}</p>
-                <img
-                  src={weatherData.current.condition.icon}
-                  alt={weatherData.current.condition.text}
-                  className='w-16 h-16'
-                />
+                <div className='w-16 h-16 relative'>
+                    <Image
+                    src={`https:${weatherData.current.condition.icon}`}
+                    alt={weatherData.current.condition.text}
+                    fill={true}
+                    sizes='100vh'
+                    />
+                    </div>
               </div>
               <p>Temperature: {weatherData.current.temp_f}°F</p>
               <p>Feels Like: {weatherData.current.feelslike_f}°F</p>
