@@ -3,6 +3,7 @@
 This Weather app is built using TypeScript and React, and it utilizes location services, a weather API, GraphQL, and Chart.js to display relevant weather information.
 
 #Features
+
 -Location Services: The app uses location services to determine the user's current location, providing accurate weather information.
 
 -Weather API: It fetches weather data from a weather API, ensuring real-time and up-to-date weather information.
