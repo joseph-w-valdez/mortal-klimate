@@ -54,31 +54,39 @@ export default function Form() {
     };
 
     return (
-        <div className='flex flex-col gap-4 border border-2 p-6 rounded-xl'>
+        <div className='flex flex-col gap-4 border border-2 p-6 rounded-xl min-w-[500px]'>
           <form
             onSubmit={handleSubmit}
-            className='flex gap-4'
+            className='flex gap-4 justify-between items-center'
           >
-              <input
-                  id='location-input'
-                  className='text-black rounded-lg pl-4'
-                  name='location'
-                  value={userLocation}
-                  type='text'
-                  placeholder='Enter location...'
-                  required
-                  onChange={(e) => {setUserLocation(e.target.value)}}
-              />
-              <button
-                  id='submit-button'
-                  type='submit'
-                  className='bg-gray-300 px-2 py-1 rounded-lg text-black hover:bg-gray-500 hover:text-white transition duration-300'
-              >
-                      Submit
-              </button>
-              <div className='flex flex-col'>
-                <button>Temperature Slider</button>
-                <button>Unit Slider</button>
+              <div className='flex gap-4'>
+                <input
+                    id='location-input'
+                    className='text-black rounded-lg pl-4 h-10'
+                    name='location'
+                    value={userLocation}
+                    type='text'
+                    placeholder='Enter location...'
+                    required
+                    onChange={(e) => {setUserLocation(e.target.value)}}
+                />
+                <button
+                    id='submit-button'
+                    type='submit'
+                    className='bg-gray-300 h-10 px-2 py-1 rounded-lg text-black hover:bg-gray-500 hover:text-white transition duration-300'
+                >
+                        Submit
+                </button>
+              </div>
+              <div className='flex flex-col min-w-[150px] gap-2'>
+              <button type='button' className='flex bg-gray-500 rounded-xl'>
+                  <div className='w-1/2'>°F</div>
+                  <div className='w-1/2'>°C</div>
+                </button>
+                <button type='button' className='flex bg-gray-500 rounded-xl px-2'>
+                  <div className='w-1/2'>Imperial</div>
+                  <div className='w-1/2'>Metric</div>
+                </button>
               </div>
           </form>
           {weatherData && (
