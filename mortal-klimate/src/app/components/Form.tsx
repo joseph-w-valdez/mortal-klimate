@@ -8,10 +8,14 @@ interface WeatherData {
       text: string,
       icon: string,
     },
+    feelslike_c: number,
     feelslike_f: number,
+    gust_kph: number,
     gust_mph: number,
     humidity: number,
+    temp_c: number,
     temp_f: number,
+    wind_kph: number,
     wind_mph: number,
     uv: number,
   };
@@ -95,7 +99,7 @@ export default function Form() {
                 type='button'
                 onClick={toggleTempUnit}
               >
-                  <button className={`w-5 h-5 rounded-full absolute bg-white shadow-xl ${isFahrenheit ? 'translate-x-1' : 'translate-x-[175px]'} transition duration-300`}></button>
+                  <div className={`w-5 h-5 rounded-full absolute bg-white shadow-xl ${isFahrenheit ? 'translate-x-1' : 'translate-x-[175px]'} transition duration-300`}></div>
                   <div className='w-1/2'>°F</div>
                   <div className='w-1/2'>°C</div>
                 </button>
@@ -104,7 +108,7 @@ export default function Form() {
                 type='button'
                 onClick={toggleImperialUnits}
               >
-                  <button className={`w-5 h-5 rounded-full absolute bg-white shadow-xl ${isImperial ? 'translate-x-1' : 'translate-x-[175px]'} transition duration-300`}></button>
+                  <div className={`w-5 h-5 rounded-full absolute bg-white shadow-xl ${isImperial ? 'translate-x-1' : 'translate-x-[175px]'} transition duration-300`}></div>
                   <div className='w-1/2 pl-3'>Imperial</div>
                   <div className='w-1/2 pr-2'>Metric</div>
                 </button>
@@ -124,10 +128,30 @@ export default function Form() {
                     />
                     </div>
               </div>
-              <p>Temperature: {weatherData.current.temp_f}°F</p>
-              <p>Feels Like: {weatherData.current.feelslike_f}°F</p>
-              <p>Wind Speed: {weatherData.current.wind_mph}mph</p>
-              <p>Gust Speed: {weatherData.current.gust_mph}mph</p>
+              {isFahrenheit && (
+                <>
+                    <p>Temperature: {weatherData.current.temp_f}°F</p>
+                    <p>Feels Like: {weatherData.current.feelslike_f}°F</p>
+                </>
+              )}
+              {!isFahrenheit && (
+                <>
+                    <p>Temperature: {weatherData.current.temp_c}°C</p>
+                    <p>Feels Like: {weatherData.current.feelslike_c}°C</p>
+                </>
+              )}
+              {isImperial && (
+                <>
+                    <p>Wind Speed: {weatherData.current.wind_mph}mph</p>
+                    <p>Gust Speed: {weatherData.current.gust_mph}mph</p>
+                </>
+              )}
+              {!isImperial && (
+                <>
+                    <p>Wind Speed: {weatherData.current.wind_kph}kph</p>
+                    <p>Gust Speed: {weatherData.current.gust_kph}kph</p>
+                </>
+              )}
               <p>Humidity: {weatherData.current.humidity}</p>
               <p>UV Index: {weatherData.current.uv}</p>
             </div>
