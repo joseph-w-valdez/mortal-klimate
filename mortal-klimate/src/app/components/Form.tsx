@@ -90,7 +90,7 @@ export default function Form() {
                     type='submit'
                     className='bg-gray-300 h-10 px-2 py-1 rounded-lg text-black hover:bg-gray-500 hover:text-white transition duration-300'
                 >
-                        Submit
+                  Submit
                 </button>
               </div>
               <div className='flex flex-col w-[200px] gap-2'>
