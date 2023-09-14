@@ -27,6 +27,9 @@ export default function Form() {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
   const weatherApi = process.env.NEXT_PUBLIC_WEATHER_API_KEY
   const weatherApiUrl = process.env.NEXT_PUBLIC_WEATHER_API_URL
+  const [isFahrenheit, setIsFahrenheit] = useState(true)
+  const [isImperial, setIsImperial] = useState(true)
+
 
   async function fetchWeatherData() {
     try {
@@ -53,13 +56,21 @@ export default function Form() {
         setUserLocation('');
     };
 
+    const toggleTempUnit = () => {
+      setIsFahrenheit(!isFahrenheit)
+    }
+
+    const toggleImperialUnits = () => {
+      setIsImperial(!isImperial)
+    }
+
     return (
         <div className='flex flex-col gap-4 border border-2 p-6 rounded-xl min-w-[500px]'>
           <form
             onSubmit={handleSubmit}
             className='flex gap-4 justify-between items-center'
           >
-              <div className='flex gap-4'>
+              <div className='flex gap-1'>
                 <input
                     id='location-input'
                     className='text-black rounded-lg pl-4 h-10'
@@ -78,14 +89,24 @@ export default function Form() {
                         Submit
                 </button>
               </div>
-              <div className='flex flex-col min-w-[150px] gap-2'>
-              <button type='button' className='flex bg-gray-500 rounded-xl'>
+              <div className='flex flex-col w-[200px] gap-2'>
+              <button
+                className='flex bg-gray-500 rounded-xl relative items-center'
+                type='button'
+                onClick={toggleTempUnit}
+              >
+                  <button className={`w-5 h-5 rounded-full absolute bg-white shadow-xl ${isFahrenheit ? 'translate-x-1' : 'translate-x-[175px]'} transition duration-300`}></button>
                   <div className='w-1/2'>°F</div>
                   <div className='w-1/2'>°C</div>
                 </button>
-                <button type='button' className='flex bg-gray-500 rounded-xl px-2'>
-                  <div className='w-1/2'>Imperial</div>
-                  <div className='w-1/2'>Metric</div>
+              <button
+                className='flex bg-gray-500 rounded-xl relative items-center'
+                type='button'
+                onClick={toggleImperialUnits}
+              >
+                  <button className={`w-5 h-5 rounded-full absolute bg-white shadow-xl ${isImperial ? 'translate-x-1' : 'translate-x-[175px]'} transition duration-300`}></button>
+                  <div className='w-1/2 pl-3'>Imperial</div>
+                  <div className='w-1/2 pr-2'>Metric</div>
                 </button>
               </div>
           </form>
