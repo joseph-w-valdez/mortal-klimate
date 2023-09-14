@@ -76,6 +76,10 @@ export default function Form() {
               >
                       Submit
               </button>
+              <div className='flex flex-col'>
+                <button>Temperature Slider</button>
+                <button>Unit Slider</button>
+              </div>
           </form>
           {weatherData && (
             <div className='flex flex-col gap-2'>
