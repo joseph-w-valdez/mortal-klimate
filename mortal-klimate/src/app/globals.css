@@ -25,3 +25,12 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+@font-face {
+  font-family: 'Mortal Kombat';
+  src: url(/assets/fonts/mk2.ttf);
+}
+
+.mk {
+  font-family: 'Mortal Kombat', sans-serif;
+}
