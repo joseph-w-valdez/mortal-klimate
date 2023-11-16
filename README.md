@@ -9,3 +9,8 @@ Get ready to battle the elements like a true weather warrior! Mortal Klimate del
 -Location Services: The app uses location services to determine the user's current location, providing accurate weather information.
 
 -Weather API: It fetches weather data from a weather API, ensuring real-time and up-to-date weather information.
+
+## Contributors
+
+- [Joseph Valdez](https://github.com/joseph-w-valdez)
+- [Jordan Dawson](https://github.com/JordanTDawson)
